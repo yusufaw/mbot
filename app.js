@@ -12,7 +12,7 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -48,8 +48,8 @@ app.use(function(err, req, res, next) {
 const Telegraf = require('telegraf')
 const Telegram = require('telegraf/telegram')
 
-const bot = new Telegraf("788053270:AAFALPlNudTfCmmOzfMv8Af-3UhFAzXDN5I")
-const telegram = new Telegram("788053270:AAFALPlNudTfCmmOzfMv8Af-3UhFAzXDN5I")
+const bot = new Telegraf(process.env.MBOT_URL)
+const telegram = new Telegram(process.env.MBOT_URL)
 
 bot.start((ctx) => ctx.reply('Welcome'))
 bot.help((ctx) => ctx.reply('Send me a sticker'))
