@@ -45,4 +45,20 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
+const Telegraf = require('telegraf')
+const Telegram = require('telegraf/telegram')
+
+const bot = new Telegraf("788053270:AAFALPlNudTfCmmOzfMv8Af-3UhFAzXDN5I")
+const telegram = new Telegram("788053270:AAFALPlNudTfCmmOzfMv8Af-3UhFAzXDN5I")
+
+bot.start((ctx) => ctx.reply('Welcome'))
+bot.help((ctx) => ctx.reply('Send me a sticker'))
+bot.on('sticker', (ctx) => ctx.reply('👍'))
+bot.hears('hi', (ctx) => ctx.reply('Hey there!'))
+bot.command('hehe', (ctx) => {
+	console.log(ctx.message.chat.id)
+	return ctx.reply('wkwkwkkw!')
+})
+bot.launch()
+
 module.exports = app;
