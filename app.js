@@ -85,9 +85,10 @@ bot.command('list', (ctx) => {
   CommandService.listCommand(ctx.message.chat.id)
       .then(result => {
         result.forEach(function(item) {
-          array.push(item.message_key)
+          array.push('\n- [' + item.message_key +']')
         })
-        return ctx.reply(array)
+        var response = 'Respon sek tak simpen:' + array.toString()
+        return ctx.reply(response.replace(/,/g, ''))
       })
       .catch(err => {
         console.err(err)
