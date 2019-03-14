@@ -80,6 +80,19 @@ bot.command('respon', (ctx) => {
   	return ctx.reply('mbok sing bener, ngene lho\n\n/respon [pagi] [pagi juga!]')
   }
 })
+bot.command('list', (ctx) => {
+  var array = []
+  CommandService.listCommand(ctx.message.chat.id)
+      .then(result => {
+        result.forEach(function(item) {
+          array.push(item.message_key)
+        })
+        return ctx.reply(array)
+      })
+      .catch(err => {
+        console.err(err)
+      });
+})
 bot.on('text', ctx => {
       CommandService.listCommand(ctx.message.chat.id)
       .then(result => {
