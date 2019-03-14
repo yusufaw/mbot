@@ -7,13 +7,23 @@ const CommandService = () => {
   const addCommand = data => {
     return new Promise((resolve, reject) => {
       let dt = new CommandModel(data);
-      dt.save()
+      if (data.message_response.length > 1) {
+        dt.save()
         .then(result => {
           resolve(result);
         })
         .catch(err => {
           reject(err);
         });
+      } else {
+        CommandModel.findOneAndRemove({ message_key: data.message_key})
+        .then(result => {
+          resolve(result);
+        })
+        .catch(err => {
+          reject(err);
+        });
+      }
     });
   };
 
