@@ -7,7 +7,7 @@ const CommandService = () => {
   const addCommand = data => {
     return new Promise((resolve, reject) => {
       let dt = new CommandModel(data);
-        dt.save()
+      dt.save()
         .then(result => {
           resolve(result);
         })
@@ -18,20 +18,24 @@ const CommandService = () => {
   };
 
   const removeCommand = data => {
-    return  new Promise((resolve, reject) => {
-      CommandModel.findOneAndRemove({ message_key: data.message_key})
-      .then(result => {
-        resolve(result);
-      })
-      .catch(err => {
-        reject(err);
-      });
+    return new Promise((resolve, reject) => {
+      CommandModel.findOneAndRemove({
+          message_key: data.message_key
+        })
+        .then(result => {
+          resolve(result);
+        })
+        .catch(err => {
+          reject(err);
+        });
     });
   }
 
   const listCommand = (chat_id) => {
     return new Promise((resolve, reject) => {
-      CommandModel.find({chat_id: chat_id})
+      CommandModel.find({
+          chat_id: chat_id
+        })
         .then(result => {
           resolve(result);
         })
