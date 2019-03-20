@@ -109,7 +109,13 @@ bot.on('text', ctx => {
       CommandService.listCommand(ctx.message.chat.id)
       .then(result => {
         const res = result.filter(function(x){return ctx.message.text.includes(x.message_key)})[0]
-        if (res) return ctx.reply(res.message_response)
+        if (res) {
+          if(res.message_response.constructor === Array) {
+            return ctx.reply(res.message_response[Math.floor(Math.random() * res.message_response.length) ])
+          } else {
+            return ctx.reply(res.message_response)
+          }
+        }
       })
       .catch(err => {
         console.err(err)
