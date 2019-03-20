@@ -17,6 +17,24 @@ const CommandService = () => {
     });
   };
 
+  const updateCommand = data => {
+    return new Promise((resolve, reject) => {
+      CommandModel.findOneAndUpdate({
+          message_key: data.message_key
+        }, {
+          $push: {
+            message_response: data.message_response
+          }
+        })
+        .then(result => {
+          resolve(result);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
   const removeCommand = data => {
     return new Promise((resolve, reject) => {
       CommandModel.findOneAndRemove({
@@ -47,6 +65,7 @@ const CommandService = () => {
 
   return {
     addCommand: addCommand,
+    updateCommand: updateCommand,
     removeCommand: removeCommand,
     listCommand: listCommand
   }

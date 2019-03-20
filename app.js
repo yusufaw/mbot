@@ -69,9 +69,20 @@ bot.command('respon', (ctx) => {
       'message_response': found[2]
     }
     if (found[2].length > 0) {
-      CommandService.addCommand(cmd)
+      CommandService.updateCommand(cmd)
         .then(result => {
-          return ctx.reply('mantap! jal ngetiko ' + found[1])
+          if (!result) {
+            return CommandService.addCommand(cmd)
+              .then(result => {
+                return ctx.reply('mantap! jal ngetiko ' + found[1])
+              })
+              .catch(err => {
+                console.log(err);
+                return ctx.reply('lagi error bos!')
+              })
+          } else {
+            return ctx.reply('mantap! jal ngetiko ' + found[1])
+          }
         })
         .catch(err => {
           console.log(err);
