@@ -116,6 +116,9 @@ bot.command('list', (ctx) => {
       console.err(err)
     });
 })
+bot.command('about', (ctx) => {
+  ctx.reply('https://github.com/yusufaw/mbot')
+})
 bot.on('text', ctx => {
   CommandService.listCommand(ctx.message.chat.id)
     .then(result => {
