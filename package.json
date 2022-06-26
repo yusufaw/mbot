@@ -8,7 +8,7 @@
   "dependencies": {
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "mongoose": "5.7.5",
+    "mongoose": "6.4.0",
     "telegraf": "^3.27.1"
   }
 }
