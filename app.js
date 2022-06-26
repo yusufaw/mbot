@@ -1,10 +1,12 @@
 const express = require('express');
 var path = require('path');
+const { Telegraf } = require('telegraf')
 require('dotenv').config();
 
 var index = require('./routes/index');
 
 const CommandService = require('./service/CommandService');
+const bot = new Telegraf(process.env.MBOT_TOKEN)
 
 var app = express();
 
@@ -27,12 +29,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-const Telegraf = require('telegraf')
-const Telegram = require('telegraf/telegram')
-
-const bot = new Telegraf(process.env.MBOT_TOKEN)
-const telegram = new Telegram(process.env.MBOT_TOKEN)
 
 bot.start((ctx) => ctx.reply('Welcome'))
 bot.help((ctx) => ctx.reply('Send me a sticker'))
