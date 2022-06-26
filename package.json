@@ -1,7 +1,6 @@
 {
-  "name": "mimiku",
-  "version": "0.0.0",
-  "private": true,
+  "name": "mbot",
+  "version": "0.0.1",
   "scripts": {
     "start": "node ./bin/www"
   },
