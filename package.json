@@ -6,7 +6,6 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "debug": "~2.6.3",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mongoose": "5.7.5",
