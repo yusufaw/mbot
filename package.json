@@ -6,7 +6,6 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.3",
     "cron": "^1.7.2",
     "debug": "~2.6.3",
     "dotenv": "^16.0.1",

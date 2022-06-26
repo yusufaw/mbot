@@ -1,6 +1,5 @@
 const express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
 require('dotenv').config();
 
 var index = require('./routes/index');
@@ -9,7 +8,6 @@ const CommandService = require('./service/CommandService');
 
 var app = express();
 
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
