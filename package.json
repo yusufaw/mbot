@@ -6,14 +6,12 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
     "cron": "^1.7.2",
     "debug": "~2.6.3",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mongoose": "5.7.5",
-    "morgan": "^1.9.1",
     "pug": "^2.0.3",
     "telegraf": "^3.27.1"
   }
