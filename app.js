@@ -99,7 +99,7 @@ bot.on('text', ctx => {
   CommandService.listCommand(ctx.message.chat.id)
     .then(result => {
       const res = result.filter(function(x) {
-        return ctx.message.text.includes(x.message_key)
+        return ctx.message.text.toUpperCase().includes(x.message_key.toUpperCase())
       })
       const resRandom = res[Math.floor(Math.random() * res.length)]
       if (resRandom) {
